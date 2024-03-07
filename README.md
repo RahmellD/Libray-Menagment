@@ -27,10 +27,10 @@ This project is a Library Management System implemented using Node.js, Express, 
 3. Install dependencies: `npm install`
 4. Configure environment variables: Create a `.env` file and add necessary variables.
 
-## Configuration
+## Env
 Update the `.env` file with the following configuration:
 
-DATABASE_URL="mysql://<username>:<password>@localhost:3306/name of db"
+DATABASE_URL=mysql://'username:password@localhost:3306/name of db'
 
-SECRET_KEY = <Your-secret-key>
+SECRET_KEY = Your-secret-key
 
