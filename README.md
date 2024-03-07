@@ -30,7 +30,7 @@ This project is a Library Management System implemented using Node.js, Express, 
 ## Env
 Update the `.env` file with the following configuration:
 
-DATABASE_URL=mysql://'username:password@localhost:3306/name of db'
+DATABASE_URL="mysql://username:password@localhost:3306/name of db"
 
 SECRET_KEY = Your-secret-key
 
