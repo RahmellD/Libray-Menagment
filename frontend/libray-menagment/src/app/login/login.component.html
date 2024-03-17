@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row no-gutter">
+        <div class="col-md-3 d-none d-md-flex"></div>
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-xl-8 mx-auto">
+                            <h3 class="display-4 text-center">Login</h3>
+                            <form #loginForm="ngForm" (ngSubmit)="login()">
+                                <div class="form-group mb-3 mt-5">
+                                    <input id="inputEmail" name="email" type="email" placeholder="Email address"
+                                        [(ngModel)]="email" autofocus="" required
+                                        class="form-control rounded-pill border-0 shadow-sm px-4" #emailInput="ngModel">
+                                    
+                                    <div *ngIf="emailInput?.invalid && (emailInput?.dirty || emailInput?.touched)"
+                                        class="text-danger">
+                                        <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+                                        <div *ngIf="emailInput.errors?.['email']">Invalid email format.</div>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <input id="inputPassword" name="password" type="password" placeholder="Password"
+                                        [(ngModel)]="password" required
+                                        class="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                                        #passwordInput="ngModel">
+                                    <!-- Display error message for invalid password -->
+                                    <div *ngIf="passwordInput?.invalid && (passwordInput?.dirty || passwordInput?.touched)"
+                                        class="text-danger">
+                                        <div *ngIf="passwordInput?.errors?.['required']">Password is required.</div>
+                                    </div>
+                                </div>
+                                <p class="text-danger" *ngIf="emptyValues">Please check your values</p>
+                                <button type="submit"
+                                    class="btn btn-primary btn-block text-uppercase mb-2 mt-4 col-xl-9 rounded-pill shadow-sm">Sign
+                                    in</button>
+                                <div class="text text-center d-flex  mt-4">
+                                    <p>Don't have an account? <a routerLink="/register" class="font-italic text-muted">
+                                            Register now</a></p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

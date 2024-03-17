@@ -17,7 +17,6 @@
   "description": "## Overview This project is a Library Management System implemented using Node.js, Express, Prisma, and MySQL database. It includes user authentication to manage library resources efficiently.",
   "version": "0.0.1",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RahmellD/Libray-Menagment.git"

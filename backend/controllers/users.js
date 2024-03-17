@@ -89,22 +89,27 @@ const getUser = async (req, res) => {
 }
 
 
-const login = async(req, res) =>{
+const login = async (req, res) => {
     try {
-        const {email, password} = req.body
+        const { email, password } = req.body
         const user = await prisma.user.findFirst({
             where: {
                 email
             }
         })
-        if(user){
+        if (user) {
             const validPass = await bcrypt.compare(password, user.password)
-            const token = await jwt.sign(user, process.env.SECRET_KEY, {
-                expiresIn: '10m'
-            })
-            res.json(token)
-        } else {
-            res.status(404).send('Please check your credentials.')
+            if (validPass) {
+                const token = await jwt.sign(user, process.env.SECRET_KEY, {
+                    expiresIn: '10m'
+                })
+                res.json(token)
+            }
+            else {
+                // If the password is invalid, send an error response
+                res.status(401).send('Incorrect password');
+            }
+           
         }
     } catch (error) {
         console.log(error);

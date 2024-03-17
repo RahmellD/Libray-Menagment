@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 //create book
 const createBook = async (req, res) => {
     try {
-        const { title, genre, price, published, ISBN, authorId } = req.body
+        const { title, genre, price, published, ISBN, author_name, imageUrl } = req.body
         const book = await prisma.book.create({
             data: {
                 title,
@@ -13,7 +13,8 @@ const createBook = async (req, res) => {
                 price,
                 published,
                 ISBN,
-                authorId
+                author_name,
+                imageUrl
             }
         })
         res.json(book)
@@ -61,23 +62,7 @@ const deleteBook = async (req, res) => {
     }
 }
 
-//add author to book
-const addAuthor = async (req, res) => {
-    try {
-        const book = await prisma.book.update({
-            where: {
-                id: parseInt(req.params.id)
-            },
-            data: {
-                authorId
-            }
-        })
-        res.json(book)
-    } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal server error!');
-    }
-}
+
 
 //get all boks
 const getAllBooks = async (req, res) => {
@@ -112,13 +97,11 @@ const getBookAuthors = async (req, res) => {
             where: {
                 id: parseInt(req.params.id)
             },
-            include: {
-                author: {
-                    select: {
-                        name: true
-                    }
-                }
+            select:{
+                title: true,
+                author_name:true
             }
+            
         })
         if (!book) {
             return res.status(404).send('Book not found');
@@ -131,4 +114,4 @@ const getBookAuthors = async (req, res) => {
 }
 
 
-module.exports = { createBook, updateBook, deleteBook, addAuthor, getAllBooks, getBookById, getBookAuthors }
+module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBookAuthors }
