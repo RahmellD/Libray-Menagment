@@ -88,7 +88,7 @@ const getUser = async (req, res) => {
     }
 }
 
-
+//Login API
 const login = async (req, res) => {
     try {
         const { email, password } = req.body
@@ -106,8 +106,7 @@ const login = async (req, res) => {
                 res.json(token)
             }
             else {
-                // If the password is invalid, send an error response
-                res.status(401).send('Incorrect password');
+                res.status(401).send('Invalid Credentials');
             }
            
         }
