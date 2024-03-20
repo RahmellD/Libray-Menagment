@@ -17,7 +17,6 @@ model Book {
   id           Int            @id @default(autoincrement())
   title        String
   genre        String
-  ISBN         String
   price        Float
   author_name  String
   published    DateTime

@@ -1,3 +1,28 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white text-decoration-none">Libray Menagment</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor04"
+            aria-controls="navbarColor04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor04">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-link">
+                    <a class="nav-link" routerLink="/home">Home</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link" routerLink="/login">Login</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link" routerLink="">Pricing</a>
+                </li>
+                <li class="nav-link">
+                    <a class="nav-link">About</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container">
     <div class="row no-gutter">
         <div class="col-md-3 d-none d-md-flex"></div>
@@ -12,7 +37,7 @@
                                     <input id="inputEmail" name="email" type="email" placeholder="Email address"
                                         [(ngModel)]="email" autofocus="" required
                                         class="form-control rounded-pill border-0 shadow-sm px-4" #emailInput="ngModel">
-                                    
+
                                     <div *ngIf="emailInput?.invalid && (emailInput?.dirty || emailInput?.touched)"
                                         class="text-danger">
                                         <div *ngIf="emailInput.errors?.['required']">Email is required.</div>

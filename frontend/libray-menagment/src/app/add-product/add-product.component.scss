@@ -1,0 +1,125 @@
+body {
+    font-family: Varela Round;
+    background: #f1f1f1;
+}
+
+.navbar-brand {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+}
+
+.button {
+    display: flex;
+    width: 80px;
+    background-color: #21272e;
+    color: #fff;
+}
+
+
+
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.form-control-file {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* Add responsiveness to the container */
+.container {
+    margin-top: 4rem;
+    max-width: 800px;
+    /* Adjust as needed */
+}
+
+/* Style the form inputs and labels */
+.form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    textarea {
+        resize: vertical;
+        /* Allow vertical resizing of textarea */
+    }
+
+    input[type="file"] {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Style the submit button */
+.btn-primary {
+    display: inline-block;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 767px) {
+    .container {
+        margin-top: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        display: block;
+        width: 100%;
+    }
+}

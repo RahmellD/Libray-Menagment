@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Add New Books</a>
+        <button type="submit" class="btn btn-secondary" routerLink="/books">Go Back</button>
+    </div>
+</nav>
+
+
+<div class="container mt-4">
+    <h2>Add New Book</h2>
+    <form #bookForm="ngForm">
+
+        <div class="form-group">
+            <label for="bookName">Book Title:</label>
+            <input type="text" id="bookName" name="bookName" [(ngModel)]="title" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="bookAuthor">Book Genre:</label>
+            <input type="text" id="bookAuthor" name="bookAuthor" [(ngModel)]="genre" class="form-control"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="bookGenre">Book Author:</label>
+            <input type="text" id="bookGenre" name="bookGenre" [(ngModel)]="author_name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="bookPublished">Book Published:</label>
+            <input type="date" id="bookPublished" name="bookPublished" [(ngModel)]="published" class="form-control"
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="bookPrice">Book Price:</label>
+            <input type="number" id="bookPrice" name="bookPrice" [(ngModel)]="price" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="bookPhoto">Book Photo:</label>
+            <input type="file" id="bookPhoto" name="bookPhoto"[(ngModel)]="imageUrl" class="form-control-file" required>
+        </div>
+
+        <button type="submit" class="btn btn-secondary" (click)="addBook()">Add Book</button>
+    </form>
+</div>

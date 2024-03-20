@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBookAuthors } = require('../controllers/books')
 const verifyToken = require('../middlewares/verifyToken')
 
-router.post('/create', verifyToken, createBook)
+router.post('/create', createBook)
 router.put('/:id',verifyToken, updateBook)
 router.delete('/:id',verifyToken, deleteBook)
 router.get('/', getAllBooks)

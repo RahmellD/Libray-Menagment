@@ -1,0 +1,12 @@
+.nav-item {
+    padding: 0;
+
+}
+
+.navbar {
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.nav-link {
+    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1)) !important;
+}

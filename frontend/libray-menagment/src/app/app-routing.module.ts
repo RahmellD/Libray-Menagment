@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CostumerDashboardComponent } from './costumer-dashboard/costumer-dashboard.component';
 import { BooksComponent } from './books/books.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
   {
@@ -30,10 +30,6 @@ const routes: Routes = [
   },
 
   {
-    path: "navbar",
-    component: NavbarComponent,
-  },
-  {
     path: "admin-dashboard",
     component: AdminDashboardComponent,
   },
@@ -45,6 +41,11 @@ const routes: Routes = [
     path: "books",
     component: BooksComponent,
   },
+  {
+    path: "add-product",
+    component: AddProductComponent,
+  },
+
 
 
 ];

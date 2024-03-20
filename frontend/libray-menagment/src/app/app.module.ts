@@ -9,12 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, withFetch } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { CostumerDashboardComponent } from './costumer-dashboard/costumer-dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { provideHttpClient } from '@angular/common/http';
 import { BooksComponent } from './books/books.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +22,10 @@ import { BooksComponent } from './books/books.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    NavbarComponent,
     AdminDashboardComponent,
     CostumerDashboardComponent,
-    BooksComponent
+    BooksComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../service/book.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -10,7 +11,7 @@ export class BooksComponent implements OnInit {
 
   books: any[] = []
 
-  constructor(private bookService: BookService){}
+  constructor(private bookService: BookService, private router: Router) { }
 
 
   ngOnInit() {
@@ -29,6 +30,11 @@ export class BooksComponent implements OnInit {
       chunks.push(array.slice(i, i + chunkSize));
     }
     return chunks;
+  }
+
+  logout() {
+    localStorage.removeItem('token')
+    this.router.navigateByUrl('/home')
   }
 
 }
