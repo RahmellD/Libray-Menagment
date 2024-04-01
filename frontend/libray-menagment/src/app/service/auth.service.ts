@@ -31,17 +31,18 @@ export class AuthService {
     });
   }
 
-  register(name: string, email: string, password: string){
-    return this.http.post('http://localhost:3000/api/users/create', {name, email, password})
+  register(name: string, email: string, password: string) {
+    return this.http.post('http://localhost:3000/api/users/create', { name, email, password })
   }
 
-  
 
-  isLoggedIn(): boolean {
+
+
+  isLoggedIn(): Observable<boolean> {
     if (isPlatformBrowser(this.platformId)) {
       const token = localStorage.getItem('token');
-      return token !== undefined && token !== null;
+      return of(token !== undefined && token !== null);
     }
-    return false; // Return false for server-side rendering
+    return of(false); // Return false for server-side rendering
   }
 }

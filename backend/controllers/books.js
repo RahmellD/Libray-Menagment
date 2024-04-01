@@ -5,16 +5,16 @@ const prisma = new PrismaClient()
 //create book
 const createBook = async (req, res) => {
     try {
-        const { title, genre, price, published, author_name, imageUrl } = req.body
+        const { title, genre, price, published, author_name} = req.body
+        const isoPublished = new Date(published).toISOString(); 
         const book = await prisma.book.create({
             data: {
                 title,
                 genre,
                 price,
-                published,
-            
+                published: isoPublished,
                 author_name,
-                imageUrl
+               
             }
         })
         res.json(book)

@@ -9,11 +9,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent {
-  title: any
-  genre: any
-  author_name: any
+  title = ''
+  genre = ''
+  author_name = ''
   imageUrl: any
-  price: any
+  price = 0
   published: any
 
 
@@ -23,7 +23,9 @@ export class AddProductComponent {
 
 
   addBook() {
-    return this.bookService.createBook(this.title, this.genre, this.author_name, this.price, this.published, this.imageUrl).subscribe((data) => {
+    return this.bookService.createBook(this.title, this.genre, this.price, this.published, this.author_name).subscribe((data) => {
+      console.log(data);
+      
       this.toasterService.success('Product added successfully!');
       this.clearForm()
     })

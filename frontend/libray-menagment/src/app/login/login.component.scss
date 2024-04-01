@@ -24,3 +24,24 @@
     margin-left: 15%;
 }
 
+/* Override ngx-toastr styles */
+.toast-top-right {
+    top: 20px;
+    right: 20px;
+    width: 300px;
+}
+
+.toast {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 10px;
+}
+
+.toast-success {
+    border-left: 4px solid #28a745;
+    /* Green border for success toast */
+}
+
+/* Add more styles for other toast types if needed */

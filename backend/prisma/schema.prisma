@@ -20,7 +20,7 @@ model Book {
   price        Float
   author_name  String
   published    DateTime
-  imageUrl     String
+  imageUrl     String?
   borrowedBook BorrowedBook[]
 }
 

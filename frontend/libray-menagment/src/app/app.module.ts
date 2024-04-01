@@ -33,7 +33,12 @@ import { AddProductComponent } from './add-product/add-product.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true,
+      progressBar: true,
+    }),
   ],
   providers: [
     provideHttpClient(withFetch()),
