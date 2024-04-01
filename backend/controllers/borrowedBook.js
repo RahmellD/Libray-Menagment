@@ -6,6 +6,7 @@ const borrowedBook = async (req, res) => {
     try {
         const { userId, bookId, returndate } = req.body;
         const currentDate = new Date();
+        const isoPublished = new Date(returndate).toISOString();
 
         // Check if the book is already borrowed
         const existingBorrowedBook = await prisma.borrowedBook.findUnique({
@@ -18,18 +19,20 @@ const borrowedBook = async (req, res) => {
             return res.status(400).send('Book already taken');
         }
 
+
+        if (new Date(returndate) < currentDate) {
+            return res.status(400).send( "Return date must be today or later.");
+        }
+
+
         // Now proceed with creating a new borrowed book entry
         const book = await prisma.borrowedBook.create({
             data: {
                 userId: userId,
                 bookId: parseInt(bookId),
-                returndate: returndate,
+                returndate: isoPublished,
             },
         });
-
-        if (new Date(returndate) < currentDate) {
-            return res.status(400).json({ error: "Return date must be today or later." });
-        }
 
         res.json(book);
     } catch (error) {
@@ -39,10 +42,10 @@ const borrowedBook = async (req, res) => {
 };
 
 
-const deletBorrowedBook = async(req, res) =>{
+const deletBorrowedBook = async (req, res) => {
     try {
         const borrowed = await prisma.borrowedBook.delete({
-            where:{
+            where: {
                 id: parseInt(req.params.id)
             }
         })
