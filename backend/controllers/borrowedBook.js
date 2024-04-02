@@ -91,7 +91,7 @@ const getAllBoorowedBooks = async (req, res) => {
 }
 
 
-//find all borowed books
+//get book and user that borrowed that book
 const getUsersBook = async (req, res) => {
     try {
         const books = await prisma.borrowedBook.findUnique({
@@ -107,7 +107,7 @@ const getUsersBook = async (req, res) => {
                 }
             }
         })
-        res.status(200).send(books)
+        res.json(books)
     } catch (error) {
         console.log(error);
         res.status(500).send('Internal server error!')

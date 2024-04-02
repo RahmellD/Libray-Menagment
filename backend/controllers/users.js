@@ -106,9 +106,9 @@ const login = async (req, res) => {
                 res.json(token)
             }
             else {
-                res.status(401).send('Invalid Credentials');
+                res.status(400).send('Invalid Credentials');
             }
-           
+
         }
     } catch (error) {
         console.log(error);
