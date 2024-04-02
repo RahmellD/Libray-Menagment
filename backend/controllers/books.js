@@ -90,28 +90,29 @@ const getBookById = async (req, res) => {
     }
 }
 
-//get books and authors
-const getBookAuthors = async (req, res) => {
+
+const getBook = async (req, res) => {
     try {
-        const book = await prisma.book.findUnique({
+        const books = await prisma.book.findUnique({
             where: {
                 id: parseInt(req.params.id)
             },
-            select:{
-                title: true,
-                author_name:true
+            include: {
+                borrowedBook: {
+                    select: {
+                        returndate: true,
+                        userId: true
+                    }
+                },
+
             }
-            
         })
-        if (!book) {
-            return res.status(404).send('Book not found');
-        }
-        res.json(book)
+        res.json(books)
     } catch (error) {
         console.log(error);
-        res.status(500).send('Internal server error!');
+        res.status(500).send('Internal server error!')
     }
 }
 
 
-module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBookAuthors }
+module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook}
