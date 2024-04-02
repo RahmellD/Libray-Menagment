@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-
+//create borrowed book
 const borrowedBook = async (req, res) => {
     try {
         const { userId, bookId, returndate } = req.body;
@@ -21,7 +21,7 @@ const borrowedBook = async (req, res) => {
 
 
         if (new Date(returndate) < currentDate) {
-            return res.status(400).send( "Return date must be today or later.");
+            return res.status(400).send("Return date must be today or later.");
         }
 
 
@@ -41,7 +41,7 @@ const borrowedBook = async (req, res) => {
     }
 };
 
-
+//delete borowed book
 const deletBorrowedBook = async (req, res) => {
     try {
         const borrowed = await prisma.borrowedBook.delete({
@@ -56,5 +56,63 @@ const deletBorrowedBook = async (req, res) => {
     }
 }
 
+//update book
+const updateBoroowedBook = async (req, res) => {
+    try {
+        const { bookId, userId, returndate } = req.body
+        const book = await prisma.borrowedBook.update({
+            where: {
+                id: req.params.id
+            },
+            data: {
+                bookId,
+                userId,
+                returndate
+            }
+        })
+        res.json(book)
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error!');
+    }
 
-module.exports = { borrowedBook, deletBorrowedBook }
+}
+
+//find all borowed books
+const getAllBoorowedBooks = async (req, res) => {
+    try {
+        const books = await prisma.borrowedBook.findMany({
+        })
+        res.status(200).send(books)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal server error!')
+    }
+}
+
+
+//find all borowed books
+const getUsersBook = async (req, res) => {
+    try {
+        const books = await prisma.borrowedBook.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            include: {
+                user: {
+                    select: {
+                        name: true,
+                        email: true
+                    }
+                }
+            }
+        })
+        res.status(200).send(books)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal server error!')
+    }
+}
+
+
+module.exports = { borrowedBook, deletBorrowedBook, updateBoroowedBook, getAllBoorowedBooks, getUsersBook }
