@@ -5,8 +5,8 @@ const prisma = new PrismaClient()
 //create book
 const createBook = async (req, res) => {
     try {
-        const { title, genre, price, published, author_name} = req.body
-        const isoPublished = new Date(published).toISOString(); 
+        const { title, genre, price, published, author_name } = req.body
+        const isoPublished = new Date(published).toISOString();
         const book = await prisma.book.create({
             data: {
                 title,
@@ -14,7 +14,7 @@ const createBook = async (req, res) => {
                 price,
                 published: isoPublished,
                 author_name,
-               
+
             }
         })
         res.json(book)
@@ -67,7 +67,13 @@ const deleteBook = async (req, res) => {
 //get all boks
 const getAllBooks = async (req, res) => {
     try {
-        const books = await prisma.book.findMany({})
+        const page = parseInt(req.query.page) || 1
+        const itemsPerPage = 3
+        const skip = (page - 1) * itemsPerPage
+        const books = await prisma.book.findMany({
+            skip: skip,
+            take: itemsPerPage
+        })
         res.json(books)
     } catch (error) {
         console.log(error);
@@ -114,5 +120,22 @@ const getBook = async (req, res) => {
     }
 }
 
+//get book by genre
+const getBookGenre = async (req, res) => {
+    try {
+        const { genre } = req.params
+        const book = await prisma.book.findMany({
+            where: {
+                genre: genre
+            }
+        })
 
-module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook}
+        res.json(book)
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal server error!')
+    }
+}
+
+
+module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook, getBookGenre }
