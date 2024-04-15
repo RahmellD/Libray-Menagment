@@ -120,22 +120,6 @@ const getBook = async (req, res) => {
     }
 }
 
-//get book by genre
-const getBookGenre = async (req, res) => {
-    try {
-        const { genre } = req.params
-        const book = await prisma.book.findMany({
-            where: {
-                genre: genre
-            }
-        })
-
-        res.json(book)
-    } catch (error) {
-        console.log(error);
-        res.status(500).send('Internal server error!')
-    }
-}
 
 const search = async (req, res) => {
     try {
@@ -165,4 +149,4 @@ const search = async (req, res) => {
 
 
 
-module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook, getBookGenre, search }
+module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook, search }

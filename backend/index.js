@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config()
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const userRouters = require('./routers/users')
@@ -6,7 +7,7 @@ const bookRouters = require('./routers/books')
 const borrowedRouters = require('./routers/borrowedBook')
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT
 
 app.use(cors())
 app.use(bodyParser.json());
