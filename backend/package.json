@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@prisma/client": "^5.10.2",
+    "@prisma/client": "^5.12.1",
     "bcrypt": "^5.1.1",
     "body-parse": "^0.1.0",
     "cookie-parser": "^1.4.6",
@@ -9,7 +9,7 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "nodemon": "^3.1.0",
-    "prisma": "^5.10.2"
+    "npm": "^10.5.2"
   },
   "scripts": {
     "start": "nodemon index.js"
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/RahmellD/Libray-Menagment/issues"
   },
-  "homepage": "https://github.com/RahmellD/Libray-Menagment#readme"
+  "homepage": "https://github.com/RahmellD/Libray-Menagment#readme",
+  "devDependencies": {
+    "prisma": "^5.12.1"
+  }
 }

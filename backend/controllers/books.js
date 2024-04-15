@@ -137,5 +137,32 @@ const getBookGenre = async (req, res) => {
     }
 }
 
+const search = async (req, res) => {
+    try {
+        const { search } = req.query;
 
-module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook, getBookGenre }
+        if (!search) {
+            return res.status(400).json({ error: 'Search parameter is missing' });
+        }
+
+        const result = await prisma.book.findMany({
+            where: {
+                OR: [
+                    { title: { contains: search } },
+                    { author_name: { contains: search } },
+                    { genre: { contains: search } }
+                ]
+            }
+
+        });
+
+        res.json(result);
+    } catch (error) {
+        console.error('Error searching books:', error);
+        res.status(500).send('Internal server error!');
+    }
+}
+
+
+
+module.exports = { createBook, updateBook, deleteBook, getAllBooks, getBookById, getBook, getBookGenre, search }
