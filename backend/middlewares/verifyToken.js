@@ -9,6 +9,10 @@ const verifyToken = async (req, res, next) => {
         }
 
         const token = authorizationHeader.split(' ')[1];
+        const verify = jwt.verify(token, process.env.SECRET_KEY)
+        if(verify){
+            req.user = verify
+        }
 
         // Decode the token to get user information
         const decodedToken = jwt.decode(token, process.env.SECRET_KEY);
