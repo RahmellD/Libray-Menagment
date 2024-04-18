@@ -62,7 +62,7 @@ const updateBoroowedBook = async (req, res) => {
         const { bookId, userId, returndate } = req.body
         const book = await prisma.borrowedBook.update({
             where: {
-                id: req.params.id
+                id: parseInt(req.params.id)
             },
             data: {
                 bookId,
